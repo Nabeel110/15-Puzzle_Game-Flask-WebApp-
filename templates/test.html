@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>Puzzle game</title>
+  <!-- <script src="js/wheel-zoom.min.js"></script> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename = 'styles.css' )}}">
+</head>
+  <body>
+<div class="game left">
+<h1 class ="h1-des">  NJH 15 PUZZLE GAME</h1>
+<form class="" action="/" method="post">
+
+
+    <div class="container my-container">
+      <div class="row no-gutters my-row">
+        <div class="col-md-3">
+          <!-- <p>{{n2}}</p> -->
+
+          <button name = "btn1" type="button" id="btn-1" class = "btn-lg btn-block animated slideInRight">{{arr[0][0]}}</button>
+        </div>
+        <div class="col-md-3">
+
+            <button name = "btn2" type="button"  id="btn-2" class = "btn-lg btn-block animated rotateIn">{{arr[0][1]}}</button>
+          </div>
+        <div class="col-md-3">
+          <button name = "btn3" type="button" id="btn-3" class = "btn-lg  btn-block animated slideInRight">{{arr[0][2]}}</button>
+        </div>
+
+        <div class="col-md-3">
+          <button name = "btn4" type="button" id="btn-4" class = "btn-lg btn-block animated rotateIn">{{arr[0][3]}}</button>
+        </div>
+      </div>
+
+      <div class="row no-gutters my-row">
+        <div class="col-md-3">
+          <button name = "btn5"  type="button" id="btn-5" class = " btn-lg btn-block animated rotateIn">{{arr[1][0]}}</button>
+        </div>
+        <div class="col-md-3">
+            <button name = "btn6" type="button" id="btn-6" class = "btn-lg btn-block animated slideInLeft">{{arr[1][1]}}</button>
+          </div>
+        <div class="col-md-3">
+          <button name = "btn7" type="button" id="btn-7" class = " btn-lg btn-block animated rotateIn">{{arr[1][2]}}</button>
+        </div>
+
+        <div class="col-md-3">
+          <button name = "btn8" type="button" id="btn-8" class = " btn-lg btn-block animated slideInLeft">{{arr[1][3]}}</button>
+        </div>
+      </div>
+
+      <div class="row no-gutters my-row">
+        <div class="col-md-3">
+          <button name = "btn9" type="button" id="btn-9" class = " btn-lg btn-block animated slideInRight">{{arr[2][0]}}</button>
+        </div>
+        <div class="col-md-3">
+            <button name = "btn10" type="button" id="btn-10" class = "  btn-lg btn-block animated rotateIn">{{arr[2][1]}}</button>
+          </div>
+        <div class="col-md-3">
+          <button name = "btn11" type="button" id="btn-11" class = "  btn-lg btn-block animated slideInRight">{{arr[2][2]}}</button>
+        </div>
+
+        <div class="col-md-3">
+          <button name = "btn12" type="button" id="btn-12" class = "btn-lg btn-block animated rotateIn">{{arr[2][3]}}</button>
+        </div>
+      </div>
+
+      <div class="row no-gutters my-row">
+        <div class="col-md-3">
+          <button name = "btn13" type="button" id="btn-13" class = " btn-lg btn-block animated rotateInUpLeft">{{arr[3][0]}}</button>
+        </div>
+        <div class="col-md-3">
+            <button name = "btn14" type="button" id="btn-14" class = "  btn-lg btn-block animated slideInUp">{{arr[3][1]}}</button>
+          </div>
+        <div class="col-md-3">
+          <button name = "btn15" type="button" id="btn-15" class = "  btn-lg btn-block animated rotateInUpLeft">{{arr[3][2]}}</button>
+        </div>
+
+        <div class="col-md-3">
+          <button name = "btn16" type="button"  id="btn-16" class = " btn-lg btn-block animated slideInUp">{{arr[3][3]}}</button>
+        </div>
+      </div>
+    </div>
+<!-- <input type="submit" name="random" value="Randomize"> -->
+
+    <!-- Drop Down Buttons -->
+<br>
+    <div class="board-hd">Board</div>
+    <br>
+       <div class="content">
+         <button  name="random" value="Randomize" id="randomize" type="submit" class="btn btn-outline-light btn-block" >Randomize</button>
+
+         <div class="form-group">
+           <br>
+    <label for="exampleFormControlTextarea1">Your Custom Table Values:</label>
+    <textarea  name="textbox" placeholder="Enter 16 comma seperated Values to fill table." class="form-control txt-edit" id="exampleFormControlTextarea1" rows="1"></textarea>
+<br>
+        <!-- <textarea name="textbox" placeholder="Enter 16 comma seperated Values to fill table with Your values"></textarea> -->
+         <button id="customInput" name ="custom" value = "custom" type="submit" class="btn btn-outline-light btn-block">Custom</button>
+       </div>
+
+       <br>
+    <div class="heading">Search <br>
+
+<select name= 'bfs' multipleclass="mdb-select md-form colorful-select dropdown-primary input">Algorithms
+  <option  value="1">Greedy-Best-First-Search</option>
+  <option value="2">A* Search</option>
+
+</select>
+<!-- <label class="mdb-main-label">Blue select</label> -->
+
+</div>
+
+<!-- Search button -->
+<br>
+<button value = 'find' name ='search' type="submit" class="btn btn-outline-primary btn-block updateButton">Search</button>
+<p>No of nodes visited is {{count}}</p>
+  </div>
+</form>
+</div>
+<div class="">
+  <div class="item1"> <img id="tree-img"  class="img-tree" src="{{tree}}" onerror="this.style.display='none'">
+  </div>
+    </div>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+  <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script>
+  </body>
+</html>
