@@ -2,11 +2,11 @@ from flask import Flask, render_template,url_for, request, redirect
 import numpy as np
 import puzzle as pz
 import AStarWithBackTrack as astar
-from IPython.display import Image, display
+# from IPython.display import Image, display
 from anytree.exporter import DotExporter
 from graphviz import render , Source
 import os
-from PIL import Image
+# from PIL import Image
 from random import shuffle
 from math import sqrt
 import numpy as np
@@ -94,7 +94,7 @@ def home():
         path , count = pz.best_first_search(arr,goal_state)
         print(path)
         DotExporter(path).to_picture("static/images/tree.png")
-        make_transparent()
+        # make_transparent()
         full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'tree2.png')
         print(full_filename)
         return render_template('test.html', tree=full_filename , arr = goal_state, count = count)
@@ -134,20 +134,20 @@ def add_header(r):
     return r
 
 
-def make_transparent():
-    img = Image.open('static/images/tree.png')
-    img = img.convert("RGBA")
-    datas = img.getdata()
-
-    newData = []
-    for item in datas:
-        if item[0] == 255 and item[1] == 255 and item[2] == 255:
-            newData.append((255, 255, 255, 0))
-        else:
-            newData.append(item)
-
-    img.putdata(newData)
-    img.save('static/images/tree2.png', "PNG")
+# def make_transparent():
+#     img = Image.open('static/images/tree.png')
+#     img = img.convert("RGBA")
+#     datas = img.getdata()
+#
+#     newData = []
+#     for item in datas:
+#         if item[0] == 255 and item[1] == 255 and item[2] == 255:
+#             newData.append((255, 255, 255, 0))
+#         else:
+#             newData.append(item)
+#
+#     img.putdata(newData)
+#     img.save('static/images/tree2.png', "PNG")
 
 def randomize():
     arr = np.arange(16).reshape((4, 4))
