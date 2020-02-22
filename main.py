@@ -1,7 +1,4 @@
 from flask import Flask, render_template,url_for, request, redirect
-from flask_wtf import Form
-from wtforms import validators, ValidationError
-from wtforms import TextField
 import numpy as np
 import puzzle as pz
 import AStarWithBackTrack as astar
