@@ -95,7 +95,7 @@ def home():
         print(path)
         DotExporter(path).to_picture("static/images/tree.png")
         # make_transparent()
-        full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'tree2.png')
+        full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'tree.png')
         print(full_filename)
         return render_template('test.html', tree=full_filename , arr = goal_state, count = count)
 
