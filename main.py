@@ -133,22 +133,6 @@ def add_header(r):
     r.headers['Cache-Control'] = 'public, max-age=0'
     return r
 
-
-# def make_transparent():
-#     img = Image.open('static/images/tree.png')
-#     img = img.convert("RGBA")
-#     datas = img.getdata()
-#
-#     newData = []
-#     for item in datas:
-#         if item[0] == 255 and item[1] == 255 and item[2] == 255:
-#             newData.append((255, 255, 255, 0))
-#         else:
-#             newData.append(item)
-#
-#     img.putdata(newData)
-#     img.save('static/images/tree2.png', "PNG")
-
 def randomize():
     arr = np.arange(16).reshape((4, 4))
     np.random.shuffle(arr)
